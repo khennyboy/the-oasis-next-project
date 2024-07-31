@@ -7,7 +7,7 @@ export default function Navigation() {
                 <li>
                     <Link
                         href="/cabins"
-                        className="hover:text-accent-400 transition-colors"
+                        className="hover:text-accent-400 transition-colors "
                     >
                         Cabins
                     </Link>
