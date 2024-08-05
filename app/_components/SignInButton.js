@@ -1,12 +1,26 @@
-import { ArrowRightOnRectangleIcon } from '@heroicons/react/24/solid';
+'use client'
 
-function SignOutButton() {
+import { signIn } from "next-auth/react";
+
+function SignInButton() {
+    const handleSignIn = () => {
+        signIn('google', { callbackUrl: '/account' });
+    };
+
     return (
-        <button className='py-3 px-5 hover:bg-primary-900 hover:text-primary-100 transition-colors flex items-center gap-4 font-semibold text-primary-200 w-full'>
-            <ArrowRightOnRectangleIcon className='h-5 w-5 text-primary-600' />
-            <span>Sign out</span>
+        <button className="flex items-center gap-6 text-lg 
+        border border-primary-300 px-10 py-4 font-medium"
+            onClick={handleSignIn}>
+            <img
+                src="https://authjs.dev/img/providers/google.svg"
+                alt="Google logo"
+                height="24"
+                width="24"
+            />
+            <span>Continue with Google</span>
         </button>
+
     );
 }
 
-export default SignOutButton;
+export default SignInButton;
