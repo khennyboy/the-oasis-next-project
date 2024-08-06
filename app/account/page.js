@@ -8,9 +8,8 @@ export const metadata = {
 
 export default async function Page() {
     const session = await getServerSession(authOptions);
-    const guests = await getGuest(session.user.email)
+    // const guests = await getGuest(session.user.email)
 
-    session.user.guest_Id = guests.id
 
     const firstname = session.user.name.split(' ').at(0)
     return (
