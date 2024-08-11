@@ -2,7 +2,6 @@ import { getBookedDatesByCabinId, getSettings } from "../_lib/data-service";
 import DateSelector from "./DateSelector";
 import ReservationForm from "./ReservationForm";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../_lib/auth";
 import LoginMessage from "./LoginMessage";
 
 async function Reservation({ cabin }) {
@@ -10,7 +9,7 @@ async function Reservation({ cabin }) {
         getSettings(),
         getBookedDatesByCabinId(cabin.id),
     ]);
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
 
 
     return (
