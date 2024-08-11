@@ -1,7 +1,6 @@
 
 import SelectCountry from "@/app/_components/SelectCountry";
 import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
-import { authOptions } from "@/app/_lib/auth";
 import { getGuest } from "@/app/_lib/data-service";
 import { getServerSession } from "next-auth";
 
@@ -10,9 +9,8 @@ export const metadata = {
 };
 
 export default async function Page() {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     const guest = await getGuest(session?.user.email)
-    console.log(guest)
 
     return (
         <div>

@@ -16,7 +16,7 @@ export default async function Page({ searchParams }) {
     const filter = searchParams?.capacity ?? 'all'
 
     return (
-        <div onClick={console.log('hello')}>
+        <div >
             <h1 className="text-4xl mb-5 text-accent-400 font-medium">
                 Our Luxury Cabins
             </h1>

@@ -1,5 +1,4 @@
 import { ReservationList } from "@/app/_components/ReservationList";
-import { authOptions } from "@/app/_lib/auth";
 import { getBookings, getGuest } from "@/app/_lib/data-service";
 import { getServerSession } from "next-auth";
 
@@ -9,7 +8,7 @@ export const metadata = {
 
 export default async function Page() {
 
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     const guest = await getGuest(session?.user.email)
     const bookings = await getBookings(guest?.id)
 

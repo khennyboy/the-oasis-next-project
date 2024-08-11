@@ -1,14 +1,13 @@
 'use server'
 
 import { getServerSession } from "next-auth";
-import { authOptions } from "./auth";
 import { getBookings, getGuest } from "./data-service";
 import { supabase } from "./supabase";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function updateGuest(formData) {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     const guest = await getGuest(session?.user.email)
 
     if (!session) throw new Error('You must be logged in')
@@ -37,7 +36,7 @@ export async function updateGuest(formData) {
 export async function deleteReservation(reservationId) {
     /* this is used to make sure the user is logged in and 
     and they are updating there own booking*/
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     if (!session) throw new Error('You must be logged in')
     const guest = await getGuest(session?.user.email)
     const guestbookings = await getBookings(guest.id)
@@ -60,7 +59,7 @@ export async function deleteReservation(reservationId) {
 export async function UpdateBooking(formData) {
     /* this is used to make sure the user is logged in and 
      and they are updating there own booking*/
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     if (!session) throw new Error('You must be logged in')
     const guest = await getGuest(session?.user.email)
     const guestbookings = await getBookings(guest.id)
@@ -93,7 +92,7 @@ export async function UpdateBooking(formData) {
 }
 
 export async function createBooking(bookingData, formData) {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession();
     if (!session) throw new Error('You must be logged in')
     const guest = await getGuest(session?.user.email)
 
